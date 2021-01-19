@@ -2,11 +2,15 @@ const axios = require("axios").default;
 
 const options = {
   method: 'POST',
-  url: 'https://api.nationwide.com/customer-acquisition/homeowners-sales-experience/v1/rated-quotes',
-  headers: {'X-NW-Message-ID': '123', client_id: 'iQme3WrreyFWAidt213UEbU0l1fLFFM5'},
+  url: 'https://api-stage.nationwide.com/customer-acquisition/homeowners-sales-quoting/v2/rated-quotes',
+  headers: {
+    'Content-Type': 'application/json',
+    'X-NW-Message-ID': '1',
+    client_id: '3c1hQgxGVANNMSNTqXWwvPT5BVU75oWw'
+  },
   data: {
-    producer: {producerCode: '12345678 - 001', type: 'string', agencyCode: 'string'},
-    effectiveDate: '2021-01-18',
+    producer: {producerCode: '12345678 - 001', agencyCode: 'string'},
+    effectiveDate: '2021-01-19',
     creditConsent: true,
     policyAddress: {
       addressLine1: '1234 E Broad St',
@@ -15,8 +19,8 @@ const options = {
       state: 'OH',
       postalCode: '43016-1111'
     },
-    termType: 'string',
-    accountId: 'string',
+    termType: 'Annual',
+    accountId: '',
     policyHolders: [
       {
         prefillId: 'string',
@@ -38,10 +42,75 @@ const options = {
           state: 'OH',
           postalCode: '43016-1111'
         },
-        emailAddress: 'string',
-        homeNumber: 'string',
-        policyHolderType: 'string',
-        companyName: 'string',
+        emailAddress: 'test@email.com',
+        homeNumber: '123-123-1234',
+        policyHolderType: 'PolicyPriNamedInsured',
+        companyName: ''
+      }
+    ],
+    hasSupportingUmbrellaPolicy: true,
+    isAssignedRiskPlan: true,
+    hasDrivingDataConsent: true,
+    currentCarrier: {
+      currentCarrierName: 'string',
+      coverageLapse: 'string',
+      currentBodilyInjuryLimit: 'string',
+      currentCarrierTerms: 0,
+      isNationwideWinBack: true
+    },
+    vehicleDrivers: [
+      {
+        driverId: 'string',
+        vehicleId: 'string',
+        isPrimaryDriver: true,
+        isPrimaryVehicle: true
+      }
+    ],
+    drivers: [
+      {
+        ageFirstLicensed: 0,
+        driverType: 'Driver',
+        employmentInfo: {
+          currentEmployment: 'string',
+          fulltimeEmployment: 'string',
+          employmentAddress: {
+            addressLine1: '1234 E Broad St',
+            addressLine2: 'APT 534C',
+            city: 'Columbus',
+            state: 'OH',
+            postalCode: '43016-1111'
+          }
+        },
+        filings: [{filingState: 'string', filingType: 'string'}],
+        hasGraduatedCollege: true,
+        hasLicenseInSameStateForThreeYears: true,
+        healthCarePlan: 'Medicare',
+        infractions: [
+          {
+            infractionType: 'string',
+            occurrenceDate: '2021-01-19',
+            infractionDesc: 'string',
+            overrideInfraction: 'string',
+            overrideReason: 'string'
+          }
+        ],
+        isFinancialFilingRequired: false,
+        isLivingWithNWInsuredParent: false,
+        isPersonalInjuryProtectionExcluded: false,
+        licenseNumber: 'TV111111',
+        licenseState: 'OH',
+        person: {
+          firstName: 'Tyler',
+          middleName: 'Huckleberry',
+          lastName: 'Frankenstein',
+          prefix: 'dr',
+          suffix: 'c_II',
+          gender: 'F',
+          maritalStatus: 'M',
+          dateOfBirth: '1980-01-01',
+          ssn: '999-99-9999'
+        },
+        prefillId: 'string',
         priorInformation: {
           person: {
             firstName: 'Tyler',
@@ -61,169 +130,101 @@ const options = {
             state: 'OH',
             postalCode: '43016-1111'
           }
-        }
+        },
+        reasonNonDriver: 'Military',
+        relationToPrimaryNamedInsured: 'Spouse',
+        tempId: 0
       }
     ],
-    yearsWithPriorCarrier: 'string',
-    prequalificationAnswers: [{questionText: 'string', questionCode: 'string', answerValue: 'string'}],
+    vehicles: [
+      {
+        prefillId: 'string',
+        vin: '5J6RW1H55JA004191',
+        garageLocation: {
+          addressLine1: '1234 E Broad St',
+          addressLine2: 'APT 534C',
+          city: 'Columbus',
+          state: 'OH',
+          postalCode: '43016-1111'
+        },
+        odometerReading: 47213,
+        annualMiles: 10000,
+        registeredOwners: [{driverId: 'string'}],
+        excludedDrivers: [{driverId: 'string'}],
+        year: 2020,
+        make: 'NISS',
+        model: 'ROGUE SPT',
+        bodyType: '4 DOOR 100 IN',
+        bodyStyle: 'UTL4X24D',
+        primaryUse: 'Work',
+        vehicleType: 'auto',
+        isPurchasedNew: false,
+        purchasedNewDate: '2020-01-01T00:00:00.000Z',
+        costNew: {amount: 25000, currency: 'USD'},
+        customizationDetails: '4 inch lift kit',
+        customizationAmount: 2500,
+        additionalInterests: [
+          {
+            expirationDate: '2021-01-19',
+            additionalInterestType: 'string',
+            companyName: 'string',
+            address: {
+              addressLine1: '1234 E Broad St',
+              addressLine2: 'APT 534C',
+              city: 'Columbus',
+              state: 'OH',
+              postalCode: '43016-1111'
+            }
+          }
+        ],
+        hasPriorDamage: false,
+        damageLocation: 'Front passenger door',
+        isAnyRegisteredOwnerAPolicyDriver: true,
+        milesOneWay: 20,
+        daysCommutingPerWeek: 5,
+        isRegisteredInState: true,
+        prequalifiedPartnerScoreId: '2bdfa23f-6cf1-4ba2-896d-345958d122276',
+        tempId: 0
+      }
+    ],
+    telematicsEnrollments: {
+      vehicleEnrollment: {
+        vehicles: [
+          {
+            vehicleId: 'string',
+            enrollmentStatus: 'string',
+            vehicleProgram: 'string',
+            annualMileage: 0
+          }
+        ]
+      },
+      mobileEnrollment: {
+        phoneNumber: 'string',
+        hasConsentToTextActivation: true,
+        enrollmentStatus: 'string'
+      }
+    },
     offeredQuotes: [
       {
         coverages: [
           {
             coverageId: 'string',
-            coverableId: 0,
             coverageLevel: 'string',
-            selectedValue: [{code: 'string', value: 'string'}]
+            selectedValue: [{code: 'string', value: 'string'}],
+            tempCoverableId: 0
           }
-        ],
-        premium: {
-          total: {amount: 0, currency: 'string'},
-          fees: {amount: 0, currency: 'string'},
-          taxes: {amount: 0, currency: 'string'},
-          totalBeforeTaxes: {amount: 0, currency: 'string'},
-          termMonths: 0
-        }
+        ]
       }
     ],
-    coveredLocation: {
-      hasHydrantIn1000Ft: true,
-      location: {
-        addressLine1: '1234 E Broad St',
-        addressLine2: 'APT 534C',
-        city: 'Columbus',
-        state: 'OH',
-        postalCode: '43016-1111'
-      },
-      priorLocation: {
-        addressLine1: '1234 E Broad St',
-        addressLine2: 'APT 534C',
-        city: 'Columbus',
-        state: 'OH',
-        postalCode: '43016-1111'
-      },
-      numberOfOccupants: 0,
-      isInCurrLocForThreeYrs: true,
-      secondaryHome: true,
-      gatedCommunity: true,
-      seasonal: true,
-      electricWiring: {circuitBreaker: true, aluminumWire: true, knobTube: true, fuseBox: true},
-      smokeDetector: true,
-      riskItems: {
-        swimmingPool: true,
-        typeOfSwimmingPool: 'string',
-        poolLadder: true,
-        removableLadder: true,
-        swimmingLessonsProvided: true,
-        divingBoard: true,
-        waterDepthUnderDivingBoard: 0,
-        poolSlide: true,
-        waterDepthUnderSlide: 0,
-        poolFence: true,
-        selfLatchingGate: true,
-        distanceToNonOwnedBuildingPool: 'string',
-        trampoline: true,
-        distanceToNonOwnedBuildingTrampoline: 'string',
-        trampolineFence: true,
-        trampolineTieDowns: true,
-        trampolineNet: true,
-        dangerousOrExoticAnimal: true,
-        animalThatCausedInjury: true,
-        haveDogs: true,
-        dogs: [{dogBreed: 'string', biteHistory: true}],
-        incidentalFarm: true
-      },
-      hasOilTank: true,
-      oilTank: {
-        yearTankInstalled: 0,
-        tankMaterial: 'string',
-        tankLocation: 'string',
-        isClosureFillCertified: true
-      },
-      protectiveDevices: {
-        sprinklerSystem: 'string',
-        burglarAlarm: 'string',
-        fireOrSmokeAlarm: 'string',
-        hasWroughtIronBar: true,
-        windProtectiveDevices: ['string'],
-        windMitigations: [{category: 'string', selectedOption: 'string'}],
-        hasSecondaryWaterResistance: true
-      },
-      occupancy: 'string',
-      datePurchased: 'string',
-      numberOfFamilies: 0,
-      unitsBetweenFirewalls: 0,
-      townhouse: true,
-      businessOnPremises: true,
-      registeredHistoric: true,
-      historicDistrict: true,
-      modularHome: true,
-      ownershipType: 'string',
-      isShortSaleAuctForeclose_Ext: true,
-      flatRoof: true,
-      roofUlType: 'string',
-      roofCondition: 'string',
-      thermostat: true,
-      numberOfAmps: 'string',
-      currentConstruction: true,
-      currentRemodelingOrRehabiliation: true,
-      nonResidentialToResidential: true,
-      own: true,
-      childCareBusiness: true,
-      numberOfUnits: 0,
-      constructionInfo: {
-        constructionType: 'string',
-        additionalHeating: 'string',
-        yearBuilt: 0,
-        squareFootage: 0,
-        numberOfStories: 'string',
-        garages: [{numberOfCars: 0, squareFeet: 0, garageType: 'string'}],
-        otherStructures: {
-          openPorch: true,
-          screenPorch: true,
-          sunSolarRoom: true,
-          woodDeck: true,
-          breezeway: true
-        },
-        numberOfKitchens: 0,
-        kitchenDescription: 'string',
-        numberOfFullBathrooms: 0,
-        fullBathroomDescription: 'string',
-        numberOfHalfBathrooms: 0,
-        halfBathroomDescription: 0,
-        centralCooling: 'string',
-        heating: 'string',
-        walls: [{feature: 'string', percentage: 0}],
-        flooring: [{feature: 'string', percentage: 0}],
-        ceilings: [{feature: 'string', percentage: 0}],
-        siteAccess: 'string',
-        wallHeights: [{height: 0, percentage: 0}],
-        exteriorWalls: 'string',
-        foundationType: {
-          slab: true,
-          crawlSpace: true,
-          basement: true,
-          daylightWalkoutBasement: true,
-          piersRaised: true,
-          suspendedOverHillside: true
-        },
-        additionalFoundationType: {
-          concreteMasonry: true,
-          dirt: true,
-          landfill: true,
-          open: true,
-          rock: true,
-          sand: true
-        },
-        roofMaterial: 'string'
-      },
-      deededOwner: true
-    },
     eligibleDiscounts: [
       {
         eligibleDiscountId: 'string',
         selectedOptionValue: 'string',
-        availableOptions: [{optionValue: 'string', optionDescription: 'string'}],
-        qualifyingInformation: {associateNumber: 0}
+        qualifyingInformation: {
+          groupOccupation: 'string',
+          smartrideMobileConsentToText: true,
+          mobilePhone: 'string'
+        }
       }
     ]
   }
