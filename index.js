@@ -177,7 +177,7 @@ const options = {
           {
             "numberOfCars": 1,
             "squareFeet": 100,
-            "garageType": "null"
+            "garageType": "Attached Garage"
           }
         ],
         "otherStructures": {
@@ -188,32 +188,14 @@ const options = {
           "breezeway": true
         },
         "numberOfKitchens": 1,
-        "kitchenDescription": "string",
+        "kitchenDescription": "Basic",
         "numberOfFullBathrooms": 1,
-        "fullBathroomDescription": "string",
+        "fullBathroomDescription": "Basic",
         "numberOfHalfBathrooms": 1,
-        "halfBathroomDescription": 0,
+        "halfBathroomDescription": "Basic",
         "centralCooling": null,
         "heating": null,
-        "walls": [
-          {
-            "feature": "string",
-            "percentage": 0
-          }
-        ],
-        "flooring": [
-          {
-            "feature": "string",
-            "percentage": 0
-          }
-        ],
         "siteAccess": null,
-        "wallHeights": [
-          {
-            "height": 10,
-            "percentage": 15
-          }
-        ],
         "foundationType": {
           "slab": true,
           "crawlSpace": true,
